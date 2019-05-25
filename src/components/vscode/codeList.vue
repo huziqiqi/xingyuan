@@ -81,7 +81,9 @@ export default {
       prefix: "",
       body1: [],
       body: [],
-      description: ""
+      description: "",
+      url:
+        "http://59.110.173.122:8888/hook?access_key=NacYE4VMwp63pUP01GoNgk10BqilAkgT6ZtlZS8i21Pthrh2&param=pull"
     };
   },
   components: {
