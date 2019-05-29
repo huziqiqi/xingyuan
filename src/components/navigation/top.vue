@@ -45,12 +45,37 @@
         </dl>
       </li>
       <li class="layui-nav-item">
-        <a href>退了</a>
+        <a @click="login">登录</a>
       </li>
     </ul>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      date: "2018"
+    };
+  },
+  mounted() {
+    console.log("刷新");
+    this.login();
+  },
+  methods: {
+    login() {
+      layer.open({
+        type: 1,
+        title: "登录",
+        skin: "layui-layer-rim", //加上边框
+        area: ["420px", "240px"], //宽高
+        content: "html内容",
+        btn: ["按钮一", "按钮二", "按钮三"], //可以无限个按钮
+        btn1: function(index, layero) {
+          //按钮【按钮三】的回调
+        }
+      });
+    }
+  }
+};
 </script>
 

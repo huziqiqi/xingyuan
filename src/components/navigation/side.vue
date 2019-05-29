@@ -33,7 +33,7 @@
               <router-link to="/codelist">代码列表</router-link>
             </dd>
             <dd>
-              <a href="javascript:;">列表二</a>
+              <router-link to="/addcode">添加代码</router-link>
             </dd>
             <dd>
               <a href>超链接</a>

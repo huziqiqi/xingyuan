@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import user from '@/components/user'
 import navigation from '@/components/navigation/index'
 import codelist from '@/components/vscode/codeList'
+import addcode from '@/components/vscode/addCode'
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +21,10 @@ export default new Router({
       path: '/codelist',
       name: 'codelist',
       component: codelist
+    }, {
+      path: '/addcode',
+      name: 'codelist',
+      component: addcode
     },
     // {
     //   path: '/helloworld',

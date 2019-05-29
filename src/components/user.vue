@@ -1,69 +1,66 @@
 <template>
-  <div class="layui-layout layui-layout-admin">
-    <navigation></navigation>
-    <div class="layui-body">
-      <!-- 内容主体区域 -->
-      <div style="padding: 15px;">
-        内容主体区域
-        {{msg}}
-        <button class="layui-btn">
-          <i class="layui-icon">&#xe608;</i> 添加
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+      内容主体区域
+      {{msg}}
+      <button class="layui-btn">
+        <i class="layui-icon">&#xe608;</i> 添加
+      </button>
+      <table class="layui-table">
+        <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>usernam</td>
+            <td>创建时间</td>
+            <td>状态</td>
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items">
+            <td>{{item.id}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.create_date}}</td>
+            <td>{{item.state}}</td>
+            <td>
+              <button>删除</button>
+              <button class="layui-btn layui-btn-normal layui-btn-xs">修改</button>
+              <button @click="delate()" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-sm">
+          <i class="layui-icon">&#xe603;</i>
         </button>
-        <table class="layui-table">
-          <colgroup>
-            <col width="150">
-            <col width="200">
-            <col>
-          </colgroup>
-          <thead>
-            <tr>
-              <td>id</td>
-              <td>usernam</td>
-              <td>创建时间</td>
-              <td>状态</td>
-              <td>操作</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in items">
-              <td>{{item.id}}</td>
-              <td>{{item.username}}</td>
-              <td>{{item.create_date}}</td>
-              <td>{{item.state}}</td>
-              <td>
-                <button>删除</button>
-                <button class="layui-btn layui-btn-normal layui-btn-xs">修改</button>
-                <button @click="delate()" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="layui-btn-group">
-          <button class="layui-btn layui-btn-sm">
-            <i class="layui-icon">&#xe654;</i>
-          </button>
-          <button class="layui-btn layui-btn-sm">
-            <i class="layui-icon">&#xe642;</i>
-          </button>
-          <button class="layui-btn layui-btn-sm">
-            <i class="layui-icon">&#xe640;</i>
-          </button>
-          <button class="layui-btn layui-btn-sm">
-            <i class="layui-icon">&#xe602;</i>
-          </button>
-        </div>
+        <button class="layui-btn layui-btn-sm">
+          <i class="layui-icon">&#xe642;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm">
+          <i class="layui-icon">&#xe640;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm">
+          <i class="layui-icon">&#xe602;</i>
+        </button>
+      </div>
 
-        <div class="layui-btn-group">
-          <button class="layui-btn layui-btn-primary layui-btn-sm">
-            <i class="layui-icon">&#xe654;</i>
-          </button>
-          <button class="layui-btn layui-btn-primary layui-btn-sm">
-            <i class="layui-icon">&#xe642;</i>
-          </button>
-          <button class="layui-btn layui-btn-primary layui-btn-sm">
-            <i class="layui-icon">&#xe640;</i>
-          </button>
-        </div>
+      <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-primary layui-btn-sm">
+          <i class="layui-icon">&#xe654;</i>
+        </button>
+        <button class="layui-btn layui-btn-primary layui-btn-sm">
+          <i class="layui-icon">&#xe642;</i>
+        </button>
+        <button class="layui-btn layui-btn-primary layui-btn-sm">
+          <i class="layui-icon">&#xe640;</i>
+        </button>
       </div>
     </div>
   </div>
@@ -129,9 +126,7 @@ export default {
         }
       });
     },
-    updata() {
-      
-    }
+    updata() {}
   }
 };
 </script>

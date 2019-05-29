@@ -1,48 +1,51 @@
 <template>
-  <div class="layui-layout layui-layout-admin">
-    <navigation></navigation>
-    <div class="layui-body">
-      <!-- 内容主体区域 -->
-      <div style="padding: 15px;">
-        内容主体区域
-        {{msg}}
-        <table class="layui-table">
-          <thead>
-            <tr>
-              <td>id</td>
-              <td>名称</td>
-              <td>缩写</td>
-              <td>代码主题</td>
-              <td>代码备注</td>
-              <td style="width:200px">操作详情</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in items">
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.prefix}}</td>
-              <td>{{item.body}}</td>
-              <td>{{item.description}}</td>
-              <td>
-                <button
-                  class="layui-btn layui-btn-normal layui-btn-xs"
-                  @click="checkcode(item.id)"
-                >查看</button>
-                <button class="layui-btn layui-btn-warm layui-btn-xs">更新</button>
-                <button class="layui-btn layui-btn-danger layui-btn-xs" @click="delate()">删除</button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>测试</tr>
-          </tfoot>
-        </table>
-      </div>
-      <div>
-        <div @click="lastpage()">next</div>
-        当前页{{page}}
-        <div @click="nextpage()">next</div>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+      内容主体区域
+      {{msg}}
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>名称</td>
+            <td>缩写</td>
+            <td>代码主题</td>
+            <td>代码备注</td>
+            <td style="width:200px">操作详情</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items" :key="item">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.prefix}}</td>
+            <td>{{item.body}}</td>
+            <td>{{item.description}}</td>
+            <td>
+              <button class="layui-btn layui-btn-normal layui-btn-xs" @click="checkcode(item.id)">查看</button>
+              <button class="layui-btn layui-btn-warm layui-btn-xs">更新</button>
+              <button class="layui-btn layui-btn-danger layui-btn-xs" @click="delate()">删除</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>测试</tr>
+        </tfoot>
+      </table>
+    </div>
+    <div>
+      <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-sm" @click="lastpage()">
+          <i class="layui-icon">&#xe603;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm">总页{{pages}}当前页{{page}}</button>
+        <button class="layui-btn layui-btn-sm">
+          <i class="layui-icon">&#xe640;</i>
+        </button>
+        <button class="layui-btn layui-btn-sm" @click="nextpage()">
+          <i class="layui-icon">&#xe602;</i>
+        </button>
       </div>
     </div>
     <div class="code" v-show="1==10">
@@ -53,7 +56,7 @@
         <br>
         <span>&nbsp;&nbsp;"body":[</span>
         <br>
-        <span v-for="line in body1">
+        <span v-for="line in body1" :key="line">
           &nbsp;&nbsp;&nbsp;&nbsp;"{{line}}",
           <br>
         </span>
@@ -82,8 +85,7 @@ export default {
       body1: [],
       body: [],
       description: "",
-      url:
-        "http://59.110.173.122:8888/hook?access_key=NacYE4VMwp63pUP01GoNgk10BqilAkgT6ZtlZS8i21Pthrh2&param=pull"
+      pages: 100
     };
   },
   components: {
@@ -112,26 +114,34 @@ export default {
           //传入信息
           s: "App.Canvas.GetList",
           page: this.page,
-          perpage: 10,
+          perpage: 5,
           type: "canvas"
           // state:1
         },
         success: data => {
           //返回接受信息
-          data = JSON.parse(data);
-          console.log(data);
-          this.items = data.data.items;
-          console.log(this.items);
+          data = JSON.parse(data).data;
+          this.items = data.items;
+          this.pages = Math.ceil(data.total / data.perpage);
+          // console.log(this.items);
         }
       });
     },
     nextpage() {
-      console.log((this.page += 1));
-      this.ajaxList();
+      if (this.page == this.pages) {
+        layer.msg("已到最后一页");
+      } else {
+        this.page += 1;
+        this.ajaxList();
+      }
     },
     lastpage() {
-      console.log((this.page -= 1));
-      this.ajaxList();
+      if (this.page == 1) {
+        layer.msg("已到第一页");
+      } else {
+        this.page -= 1;
+        this.ajaxList();
+      }
     },
     get(id) {
       var that = this;
@@ -169,6 +179,8 @@ export default {
     checkcode(id) {
       this.get(id).then(function(num) {
         var codeNode = document.querySelector("code");
+        console.log(codeNode.innerHTML);
+
         layer.open({
           type: 1,
           skin: "layui-layer-rim", //加上边框
