@@ -10,17 +10,15 @@
             <td>id</td>
             <td>名称</td>
             <td>缩写</td>
-            <td>代码主题</td>
             <td>代码备注</td>
             <td style="width:200px">操作详情</td>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in items" :key="item">
+          <tr v-for="(item, index) in items" :key="index">
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
             <td>{{item.prefix}}</td>
-            <td>{{item.body}}</td>
             <td>{{item.description}}</td>
             <td>
               <button class="layui-btn layui-btn-normal layui-btn-xs" @click="checkcode(item.id)">查看</button>
@@ -71,10 +69,8 @@
   </div>
 </template>
 <script>
-import navigation from "../navigation/index";
-
 export default {
-  name: "user",
+  name: "codeList",
   data() {
     return {
       msg: 123,
@@ -88,11 +84,8 @@ export default {
       pages: 100
     };
   },
-  components: {
-    navigation
-  },
+
   beforeMount() {
-    console.log(123);
     this.ajaxList();
   },
   watch: {
@@ -114,7 +107,7 @@ export default {
           //传入信息
           s: "App.Canvas.GetList",
           page: this.page,
-          perpage: 5,
+          perpage: 15,
           type: "canvas"
           // state:1
         },
@@ -124,6 +117,7 @@ export default {
           this.items = data.items;
           this.pages = Math.ceil(data.total / data.perpage);
           // console.log(this.items);
+          console.log(this.items);
         }
       });
     },
@@ -145,7 +139,6 @@ export default {
     },
     get(id) {
       var that = this;
-
       return new Promise(function(resolve, reject) {
         ajax({
           url: "https://api.huziqiqi.top/",

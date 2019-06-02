@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="layui-layout layui-layout-admin">
-    <navigation></navigation>
-    <router-view/>
+    <navigation :is-login="isShow"></navigation>
+    <router-view v-show="isShow"/>
   </div>
 </template>
 
@@ -9,8 +9,16 @@
 import navigation from "./components/navigation/index";
 export default {
   name: "App",
-  beforeMount() {
-    // mounted() {
+  data() {
+    return {
+      isShow: false
+    };
+  },
+  mounted() {
+    var isLogin = true;
+    if (isLogin) {
+      this.isShow = true;
+    }
     layui.use("layer", function() {
       var layer = layui.layer;
     });

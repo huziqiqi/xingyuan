@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import user from '@/components/user'
-import navigation from '@/components/navigation/index'
+import home from '@/components/home'
+// import navigation from '@/components/navigation/index'
 import codelist from '@/components/vscode/codeList'
 import addcode from '@/components/vscode/addCode'
 Vue.use(Router)
@@ -10,8 +11,8 @@ export default new Router({
   mode: "history",
   routes: [{
       path: '/',
-      name: 'navigation',
-      component: navigation
+      name: 'home',
+      component: home
     }, {
       path: '/user',
       name: 'user',

@@ -70,6 +70,26 @@ export default {
     }
   }
 };
+</script><script>
+export default {
+  name: "side",
+  data() {
+    return {
+      flg: 0
+    };
+  },
+  created() {},
+  methods: {
+    toggle(flg) {
+      if (this.flg == flg) {
+        this.flg = -flg;
+      } else {
+        this.flg = flg;
+      }
+      console.log(this.flg);
+    }
+  }
+};
 </script>
 
 <style>

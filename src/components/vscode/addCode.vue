@@ -1,6 +1,5 @@
 <template>
   <div class="layui-layout layui-layout-admin">
-    <navigation></navigation>
     <div class="layui-body">
       <form class="layui-form">
         <div class="layui-form-item">

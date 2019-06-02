@@ -1,6 +1,8 @@
 function ajax(options) {
   var xhr = null;
   var params = formsParams(options.data);
+  options.url = "https://api.huziqiqi.top/"
+  options.async = true
   //创建对象
   if (window.XMLHttpRequest) {
     xhr = new XMLHttpRequest()
