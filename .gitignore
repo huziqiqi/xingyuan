@@ -1,0 +1,14 @@
+node_modules
+composer.lock
+
+dist
+runtime/*
+
+public/docs
+
+public/uploads
+
+gitc
+
+.idea/
+.env
