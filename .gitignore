@@ -1,14 +1,14 @@
-node_modules
-composer.lock
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-dist
-runtime/*
-
-public/docs
-
-public/uploads
-
-gitc
-
-.idea/
-.env
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
