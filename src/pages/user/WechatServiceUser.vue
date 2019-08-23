@@ -8,7 +8,34 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column sortable prop="id" label="用户id" width="140"></el-table-column>
-      <el-table-column prop="username" label="姓名" width="120"></el-table-column>
+      <el-table-column prop="nickname" label="头像" width="120">
+        <template slot-scope="scope">
+          <img :src="scope.row.headimgurl" width="30px" alt="">
+         
+        </template>
+
+      </el-table-column>
+
+
+
+      
+      <el-table-column prop="nickname" label="用户名" width="120"></el-table-column>
+      <el-table-column prop="sex" label="性别" width="60">
+        <template slot-scope="scope">
+          <!-- <img :src="scope.row.headimgurl" width="30px" alt=""> -->
+        {{scope.row.sex==1?"男":"女"}}
+        </template>
+      </el-table-column>
+
+      <el-table-column prop="country" label="地址" width="120">
+        <template slot-scope="scope">
+          <!-- <img :src="scope.row.headimgurl" width="30px" alt=""> -->
+        {{scope.row.country}}{{scope.row.province}}{{scope.row.city}}
+        </template>
+        
+      </el-table-column>
+      <!-- <el-table-column prop="nickname" label="用户名" width="120"></el-table-column> -->
+     
       <el-table-column prop="create_date" label="注册时间"></el-table-column>
       <el-table-column prop="address" width="150" label="状态">
         <template slot-scope="scope">
@@ -49,7 +76,7 @@ export default {
     ajax({
       data: {
         //传入信息
-        s: "App.User.GetList",
+        s: "App.Wechat_User.GetList",
         page: 1,
         perpage: 10
       },

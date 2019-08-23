@@ -1,14 +1,12 @@
 <template>
-  <el-menu :default-openeds="['1']" :default-active="$route.path" unique-opened="true">
+  <el-menu :default-openeds="['1']" :default-active="$route.path" unique-opened="true " router="true">
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-message"></i>用户管理
       </template>
       <el-menu-item-group>
-        <el-menu-item index="/user">
-          <router-link to="/user">普通用户</router-link>
-        </el-menu-item>
-        <el-menu-item index="1-2">公众号用户</el-menu-item>
+        <el-menu-item index="/user" > 普通用户</el-menu-item>
+        <el-menu-item index="/wechatuser">公众号用户</el-menu-item>
         <el-menu-item index="1-3">管理员用户</el-menu-item>
       </el-menu-item-group>
 

@@ -1,4 +1,4 @@
-# xingyuan-admin
+# xingyuan
 
 > A Vue.js project
 

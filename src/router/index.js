@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import user from '@/pages/user/userList'
+import wechatUser from '@/pages/user/WechatServiceUser'
+
 import home from '@/pages/home'
 // import navigation from '@/components/navigation/index'
 import codelist from '@/components/vscode/codeList'
-import addcode from '@/components/vscode/addCode'
 import template from '@/components/template/index'
 import wechat from '@/components/wechat/index'
 import goods from '@/components/goods/index'
@@ -22,16 +23,16 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: user
+    }, {
+      path: '/wechatuser',
+      name: 'wechatuser',
+      component: wechatUser
     },
     {
       path: '/codelist',
       name: 'codelist',
       component: codelist
-    }, {
-      path: '/addcode',
-      name: 'codelist',
-      component: addcode
-    },
+    }, 
     {
       path: '/template',
       name: 'template',

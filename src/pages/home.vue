@@ -1,11 +1,6 @@
 <template>
   <div>首页aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    <vueCropper
-  ref="cropper"
-  :img="option.img"
-  :outputSize="option.size"
-  :outputType="option.outputType"
-></vueCropper>
+    
   </div>
   
 </template>
@@ -16,7 +11,7 @@ export default {
   data() {
     return {
       msg: 123,
-      items: [1, 2]
+      items: [1,2,3,4]
     };
   },
 components: {
